@@ -36,6 +36,10 @@ contract CollateralizedLoan {
         uint256 collateralAmount
     );
 
+    event LoanRepaid(address borrower, uint256 borrowAmount);
+
+    event CollateralTokenWithdraw(address borrower, uint256 collateralAmount);
+
     function getInterestRate() public view returns (uint256) {
         return _interestRate;
     }
@@ -88,9 +92,6 @@ contract CollateralizedLoan {
 
     function deposit() external payable {
         require(msg.value > 0, "Deposit amount must be greater than zero");
-
-        // Emit the deposit event
-        //   emit Deposited(msg.sender, msg.value);
     }
 
     function requestLoan(
@@ -112,7 +113,6 @@ contract CollateralizedLoan {
         uint256 extraAmountToLiquidate = (_borrowAmount * getInterestRate()) /
             100;
 
-        console.log("extraAmountToLiquidate", extraAmountToLiquidate);
         require(
             _collateralAmount >= (_borrowAmount + extraAmountToLiquidate),
             "Insufficient collateral amount"
@@ -149,7 +149,10 @@ contract CollateralizedLoan {
         LoanInfo memory loanInfo = loans[msg.sender];
 
         collateralToken.transfer(msg.sender, loanInfo.collateralAmount);
-        console.log("withdrawCollateral");
+        emit CollateralTokenWithdraw(
+            loanInfo.borrower,
+            loanInfo.collateralAmount
+        );
     }
 
     function repaidLoan() public payable {
@@ -165,6 +168,7 @@ contract CollateralizedLoan {
         bool transactionStatus = _sendEthers(msg.sender, outstandingAmount);
 
         require(transactionStatus, "Loan could not repaid");
+        emit LoanRepaid(loanInfo.borrower, loanInfo.borrowAmount);
         withdrawCollateral();
     }
 
