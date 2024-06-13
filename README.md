@@ -1,1 +1,1 @@
-# solidity-sc-010-collateral-loan
+ > git clone https://<PAT>@github.com/username/repo.git
