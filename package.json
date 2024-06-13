@@ -2,9 +2,14 @@
   "name": "solidity-sc-010-collateral-loan",
   "version": "1.0.0",
   "description": "Collateral Loan smart contract",
-  "main": "hardhat.config.js",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "hardhat compile",
+    "deploy:test": "hardhat run --network sepolia-testnet scripts/deploy.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/mistertandon/solidity-sc-010-collateral-loan/issues"
   },
-  "homepage": "https://github.com/mistertandon/solidity-sc-010-collateral-loan#readme"
+  "homepage": "https://github.com/mistertandon/solidity-sc-010-collateral-loan#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2"
+  }
 }
