@@ -1,0 +1,22 @@
+{
+  "name": "solidity-sc-010-collateral-loan",
+  "version": "1.0.0",
+  "description": "Collateral Loan smart contract",
+  "main": "hardhat.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mistertandon/solidity-sc-010-collateral-loan.git"
+  },
+  "keywords": [
+    "collateral-Loan"
+  ],
+  "author": "mistertandon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mistertandon/solidity-sc-010-collateral-loan/issues"
+  },
+  "homepage": "https://github.com/mistertandon/solidity-sc-010-collateral-loan#readme"
+}
