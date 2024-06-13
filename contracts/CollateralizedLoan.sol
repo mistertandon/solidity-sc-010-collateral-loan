@@ -3,12 +3,6 @@ pragma solidity ^0.8.20;
 import "hardhat/console.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract ParveshToken is ERC20("Parvesh", "PARI") {
-    constructor(uint256 initialSupply) {
-        _mint(msg.sender, initialSupply);
-    }
-}
-
 contract CollateralizedLoan {
     IERC20 collateralToken;
 
